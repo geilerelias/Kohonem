@@ -16,7 +16,7 @@
                         </h5>
                     </div>
                     <div class="col-4 pt-1">
-                        <img src="../assets/img/logo.png" class="img-fluid float-right"  alt="Responsive image" >
+                        <img src="img/logo.png" class="img-fluid float-right"  alt="Responsive image" >
                     </div>
                 </div>
                 <!---------NAVBAR----------------------------->
@@ -135,7 +135,7 @@
                     $cv = 0.5;
 
                     $tolerancia = 0.0001;
-                    $num_iteraciones = 10;
+                    $num_iteraciones = 100;
                     $num_patrones = count($x);
                     $tipo_competencia = "dura";
                     $rata = 0.1;
@@ -414,96 +414,88 @@
             </footer>
             <!--------------------FOOTER-------------->
         </div>
-        <script src="../code/highcharts.js"></script>
-        <script src="../ode/modules/series-label.js"></script>
-        <script src="../code/modules/exporting.js"></script>
+        <script src="code/highcharts.js"></script>
+        <script src="code/modules/series-label.js"></script>
+        <script src="code/modules/exporting.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
         <script>
                             $(document).ready(function () {
-                                $('body').bootstrapMaterialDesign();
-<?php for ($index = 0; $index < count($array); $index++) { ?>
-                                    var listaErms.push(<?php echo $value ?>);
-                                            var goal.push(<?php echo $value ?>);
-                                    
-<?php } ?>
+                            var listaErms=new Array();
+                            var goal=new Array();
+                            $('body').bootstrapMaterialDesign();
+                            <?php for ($index = 0; $index < count($arrayVencedora); $index++) { ?>
+                                listaErms.push(<?php echo $arrayVencedora[$index] ?>);
+                            <?php } ?>
 
-                                grafica(listaErms, goal);
+                            grafica(listaErms);
                             });
-                            function grafica(listaErms, goal) {
+                            function grafica(listaErms) {
 
-                                /*
-                                 if (cont>10) {
-                                 clearInterval(miGrafica);
-                                 }
-                                 */
-                                //console.log(cont);
+                            /*
+                             if (cont>10) {
+                             clearInterval(miGrafica);
+                             }
+                             */
+                            //console.log(cont);
 
-                                Highcharts.chart('containerGrafica', {
-                                    title: {
-                                        text: 'Grafica Erms vs Intercion'
-                                    },
-
+                            Highcharts.chart('containerGrafica', {
+                            title: {
+                            text: 'Grafica Erms vs Intercion'
+                            },
                                     subtitle: {
-                                        text: 'Errores de cada interacion'
+                                    text: 'Errores de cada interacion'
                                     },
-
                                     yAxis: {
-                                        title: {
-                                            text: 'Erms'
-                                        }
+                                    title: {
+                                    text: 'Erms'
+                                    }
                                     },
                                     xAxis: {
-                                        title: {
-                                            text: 'Interaciones'
-                                        }
+                                    title: {
+                                    text: 'Interaciones'
+                                    }
                                     },
                                     legend: {
-                                        layout: 'vertical',
-                                        align: 'right',
-                                        verticalAlign: 'middle'
+                                    layout: 'vertical',
+                                            align: 'right',
+                                            verticalAlign: 'middle'
                                     },
-
                                     plotOptions: {
-                                        series: {
-                                            animation: true,
+                                    series: {
+                                    animation: true,
                                             label: {
-                                                connectorAllowed: false
+                                            connectorAllowed: false
                                             }
-                                        },
-                                        line: {
+                                    },
+                                            line: {
                                             dataLabels: {
-                                                enabled: false
+                                            enabled: false
                                             }
-                                        }
+                                            }
                                     },
                                     series: [{
-                                            name: 'Erms',
+                                    name: 'Erms',
                                             data: listaErms,
                                             color: '#8BC34A'
-                                        }, {
-                                            name: 'Goal',
-                                            data: goal,
-                                            color: '#FF5252'
-                                        }],
-
+                                    }],
                                     responsive: {
-                                        rules: [{
-                                                condition: {
-                                                    maxWidth: 500
-                                                },
-                                                chartOptions: {
-                                                    legend: {
-                                                        layout: 'horizontal',
-                                                        align: 'center',
-                                                        verticalAlign: 'bottom'
-                                                    }
-                                                }
-                                            }]
+                                    rules: [{
+                                    condition: {
+                                    maxWidth: 500
+                                    },
+                                            chartOptions: {
+                                            legend: {
+                                            layout: 'horizontal',
+                                                    align: 'center',
+                                                    verticalAlign: 'bottom'
+                                            }
+                                            }
+                                    }]
                                     }
 
-                                });
+                            });
                             }
         </script>
     </body>
